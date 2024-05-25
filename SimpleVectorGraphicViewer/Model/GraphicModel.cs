@@ -19,7 +19,10 @@ namespace SimpleVectorGraphicViewer.Model
         internal SolidColorBrush ColorBrush { get; set; }
         internal double Thickness { get; set; }
         internal abstract Shape GetShape();
+        public Shape GraphicShape { get; set; }
         internal abstract void GenerateValues();
+        public double Width { get; set; }
+        public double Height { get; set; }
         internal enum GType
         {
             Line =0,

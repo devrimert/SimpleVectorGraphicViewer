@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleVectorGraphicViewer.View"
+        xmlns:helpers="clr-namespace:SimpleVectorGraphicViewer.Methods.EventHelpers"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" Height="600" Width="1100" Icon="/Images/AppIco.ico" >
     <Grid>
@@ -27,8 +28,8 @@
                 <MenuItem Header="Change _Viewport Backgroud Color"/>
                 <MenuItem Header="M_inimize Window" Click="MinimizeBtn_Click"/>
                 <MenuItem Header="M_aximize Window" Click="MaximizeBtn_Click"/>
-                <MenuItem Header="Zoom _In"/>
-                <MenuItem Header="Zoom _Out"/>
+                <MenuItem Header="Zoom _In" Command="{Binding ZoomInCommand}"/>
+                <MenuItem Header="Zoom _Out" Command="{Binding ZoomOutCommand}"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" Command="{Binding ShowAboutCommand}" />
@@ -41,36 +42,38 @@
         <!--Event Center-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" MaxWidth="250" MinWidth="100"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="200" MaxWidth="250" MinWidth="100"/>
-            </Grid.ColumnDefinitions>
-            
-            <!--Tree-->
-            <Border Grid.Column="0" BorderBrush="DarkGray" BorderThickness="0,0,2,0">
-                <!--<TreeView ItemsSource="{Binding Shapes}" SelectedItemChanged="TreeView_SelectedItemChanged">
-                    <TreeView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>-->
-            </Border>
+            </Grid.ColumnDefinitions>           
             
             <!--Viewport-->
-            <Border Grid.Column="1">
-                <Canvas x:Name="Viewport"  MinHeight="500" MinWidth="500" Height="auto" Width="auto" Background="Black">
-                </Canvas>
+            <Border Grid.Column="0">
+                <ScrollViewer x:Name="MainScrollViewer" Background="Black" HorizontalScrollBarVisibility="Visible"                              
+                              
+                              VerticalScrollBarVisibility="Visible"
+                              HorizontalContentAlignment="Center"
+                              VerticalContentAlignment="Center">
+                    <Canvas x:Name="Viewport" Background="Black"
+                                                helpers:ZoomBehavior.IsEnabled="True"
+helpers:ZoomBehavior.ZoomFactor="0.1"
+helpers:ZoomBehavior.ScrollViewer="{Binding ElementName=MainScrollViewer}"
+                            Width="{Binding ScaledWidth}" Height="{Binding ScaledHeight}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Canvas.RenderTransform>
+                            <ScaleTransform CenterX="300" CenterY="300" ScaleX="{Binding Scale}" ScaleY="{Binding Scale}" />
+                        </Canvas.RenderTransform>
+                        
+                    </Canvas>
+                </ScrollViewer>
             </Border>
             
             <!--Properties Window-->
-            <Border Grid.Column="2"  BorderBrush="DarkGray" BorderThickness="2,0,0,0">
+            <Border Grid.Column="1"  BorderBrush="DarkGray" BorderThickness="2,0,0,0">
 
             </Border>
         </Grid>
         <Grid Grid.Row="2">
             <Border  BorderBrush="DarkGray" BorderThickness="0,2,0,0">
-                
+                <TextBlock Text="{Binding StatusBarText}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12"/>
             </Border>
         </Grid>
         

@@ -2,6 +2,7 @@
 using SimpleVectorGraphicViewer.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace SimpleVectorGraphicViewer.Methods
     {
         internal static Window MainWindow;
         internal static Canvas MainCanvas;
+        internal static Point CanvasCenter;
         internal static string CurrentFilePath;
         internal static double DefaultBorderThickness = 1;
 
@@ -23,10 +25,14 @@ namespace SimpleVectorGraphicViewer.Methods
         {
             try
             {
+                CultureInfo culture = CultureInfo.InvariantCulture;
                 string[] values = pointString.Split(';');
-                double x = double.Parse(values[0]);
-                double y = double.Parse(values[1]);
-                return new Point(x, y);
+                double x = CanvasCenter.X + double.Parse(values[0].Replace(',', '.'), culture);
+                double y = CanvasCenter.Y + double.Parse(values[1].Replace(',', '.'), culture);
+
+
+
+                return new Point(x, MainCanvas.ActualHeight - y);
             }
             catch (Exception ex)
             {

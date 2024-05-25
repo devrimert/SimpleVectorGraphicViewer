@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\methods\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\methods\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\model\\linemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\model\\linemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\simplevectorgraphicviewer\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\simplevectorgraphicviewer\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\model\\circlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\model\\circlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\methods\\eventhelpers\\zoombehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\methods\\eventhelpers\\zoombehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\methods\\fileprocesses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\methods\\fileprocesses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\methods\\eventhelpers\\mousewheelevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\methods\\eventhelpers\\mousewheelevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\model\\trianglemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\model\\trianglemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewer\\methods\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B408FC-6B6D-441E-8640-4F5B157DDAB9}|SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer.csproj|solutionrelative:simplevectorgraphicviewer\\methods\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 230,
           "SelectedChildIndex": 6,
           "Children": [
             {
@@ -50,104 +42,79 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CircleModel.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\CircleModel.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Model\\CircleModel.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\CircleModel.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\Model\\CircleModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAAcAAAA",
+              "DocumentIndex": 2,
+              "Title": "ZoomBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\EventHelpers\\ZoomBehavior.cs",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Methods\\EventHelpers\\ZoomBehavior.cs",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\EventHelpers\\ZoomBehavior.cs",
+              "RelativeToolTip": "SimpleVectorGraphicViewer\\Methods\\EventHelpers\\ZoomBehavior.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T20:43:29.486Z",
+              "WhenOpened": "2024-05-25T22:05:48.214Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\App.xaml.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\App.xaml.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\App.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAlAAAA",
+              "Title": "MouseWheelEvent.cs",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\EventHelpers\\MouseWheelEvent.cs",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Methods\\EventHelpers\\MouseWheelEvent.cs",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\EventHelpers\\MouseWheelEvent.cs",
+              "RelativeToolTip": "SimpleVectorGraphicViewer\\Methods\\EventHelpers\\MouseWheelEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T20:40:40.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\App.xaml",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\App.xaml",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\App.xaml",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-24T20:40:37.175Z",
+              "WhenOpened": "2024-05-25T22:05:27.939Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LineModel.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\LineModel.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Model\\LineModel.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\LineModel.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\Model\\LineModel.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAIwC4AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T20:30:49.337Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FileProcesses.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\FileProcesses.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Methods\\FileProcesses.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\FileProcesses.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\Methods\\FileProcesses.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAMwCIAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T17:18:50.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Common.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\Common.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Methods\\Common.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\Common.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\Methods\\Common.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T16:18:37.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
-              "RelativeToolTip": "SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAUwDkAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T15:52:39.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MainView.xaml",
               "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\View\\MainView.xaml",
               "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\View\\MainView.xaml",
               "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\View\\MainView.xaml",
               "RelativeToolTip": "SimpleVectorGraphicViewer\\View\\MainView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-24T16:03:49.227Z",
+              "WhenOpened": "2024-05-25T20:13:03.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Common.cs",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\Common.cs",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Methods\\Common.cs",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Methods\\Common.cs",
+              "RelativeToolTip": "SimpleVectorGraphicViewer\\Methods\\Common.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAewBcAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T20:01:41.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TriangleModel.cs",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\TriangleModel.cs",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\Model\\TriangleModel.cs",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\Model\\TriangleModel.cs",
+              "RelativeToolTip": "SimpleVectorGraphicViewer\\Model\\TriangleModel.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAxwCQAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T20:01:34.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
+              "RelativeToolTip": "SimpleVectorGraphicViewer\\ViewModel\\MainViewModel.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAD4v4IAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T19:58:01.519Z",
               "EditorCaption": ""
             }
           ]

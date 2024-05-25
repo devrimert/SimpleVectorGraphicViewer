@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SimpleVectorGraphicViewer.Methods;
 using System;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -29,6 +30,8 @@ namespace SimpleVectorGraphicViewer.Model
             this.RadiusValue = double.Parse(Radius);
             this.ColorBrush = Common.GetSolidColorBrush(Color);
             this.Thickness = Common.DefaultBorderThickness;
+            this.GraphicShape = GetShape();
+            this.Height = this.Width = 2 * RadiusValue;
         }
         internal override Shape GetShape()
         {

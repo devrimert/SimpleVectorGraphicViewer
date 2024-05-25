@@ -16,3 +16,4 @@ C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewer\
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewer\obj\Debug\SimpleVe.8D97D67C.Up2Date
+C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs

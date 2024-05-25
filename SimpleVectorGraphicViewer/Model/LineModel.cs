@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using SimpleVectorGraphicViewer.Methods;
+using System;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,7 +19,7 @@ namespace SimpleVectorGraphicViewer.Model
         public Point PointA { get; set; }
         public Point PointB { get; set; }
         public double Length { get => GetLenth(); }
-        public Shape Shape { get; set; }
+
 
 
         public LineModel()
@@ -30,7 +32,8 @@ namespace SimpleVectorGraphicViewer.Model
             this.PointB = Common.GetPoint(this.B);
             this.ColorBrush = Common.GetSolidColorBrush(this.Color);
             this.Thickness = Common.DefaultBorderThickness;
-            this.Shape = GetShape();
+            this.GraphicShape = GetShape();
+            GetDimensions();
         }
         private double GetLenth()
         {
@@ -44,10 +47,15 @@ namespace SimpleVectorGraphicViewer.Model
             line.X2 = this.PointB.X;
             line.Y2 = this.PointB.Y;
             line.Stroke = this.ColorBrush;
-            line.StrokeThickness = this.Thickness;            
+            line.StrokeThickness = this.Thickness;
             return line;
         }
+        private void GetDimensions()
+        {
+            this.Height = Math.Abs(PointA.Y - PointB.Y);    
+            this.Width = Math.Abs(PointA.X - PointB.X);
+        }
 
-    
+
     }
 }

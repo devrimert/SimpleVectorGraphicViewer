@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleVectorGraphicViewer.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,10 @@ namespace SimpleVectorGraphicViewer.View
         public MainView()
         {
             InitializeComponent();
+            
         }      
+
+      
 
         private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
         {

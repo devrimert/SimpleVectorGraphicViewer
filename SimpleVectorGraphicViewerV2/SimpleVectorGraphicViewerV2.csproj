@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85B408FC-6B6D-441E-8640-4F5B157DDAB9}</ProjectGuid>
+    <ProjectGuid>{31CA8304-0F14-434B-905B-072C63D352F0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SimpleVectorGraphicViewer</RootNamespace>
-    <AssemblyName>SimpleVectorGraphicViewer</AssemblyName>
+    <RootNamespace>SimpleVectorGraphicViewerV2</RootNamespace>
+    <AssemblyName>SimpleVectorGraphicViewerV2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,31 +58,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Methods\EventHelpers\ZoomBehavior.cs" />
-    <Compile Include="Methods\FileProcesses.cs" />
-    <Compile Include="Methods\GraphicsProcesses.cs" />
-    <Compile Include="Methods\EventHelpers\MouseWheelEvent.cs" />
-    <Compile Include="Model\CircleModel.cs" />
-    <Compile Include="Model\GraphicModel.cs" />
-    <Compile Include="Model\LineModel.cs" />
-    <Compile Include="Model\RectangleModel.cs" />
-    <Compile Include="Model\SplineModel.cs" />
-    <Compile Include="Model\TriangleModel.cs" />
-    <Compile Include="Methods\Common.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\ViewModelCommand.cs" />
-    <Compile Include="View\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -110,10 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Images\AppIco.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

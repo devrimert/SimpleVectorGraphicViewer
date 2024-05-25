@@ -1,12 +1,15 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using SimpleVectorGraphicViewer.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -36,6 +39,8 @@ namespace SimpleVectorGraphicViewer.Model
             this.PointC = Common.GetPoint(C);
             this.ColorBrush = Common.GetSolidColorBrush(Color);
             this.Thickness = Common.DefaultBorderThickness;
+            this.GraphicShape = GetShape();
+            GetDimensions();
         }
 
         internal override double GetArea()
@@ -60,11 +65,19 @@ namespace SimpleVectorGraphicViewer.Model
             path.Data = pathGeometry;
             path.Stroke = this.ColorBrush;
             path.StrokeThickness = this.Thickness;
-            path.Fill = IsFilled ? ColorBrush : Brushes.Transparent;
-
+            path.Fill = IsFilled ? ColorBrush : Brushes.Transparent;           
             return path;
         }
+        private void GetDimensions()
+        {
+            double minY = Math.Min(PointA.Y, Math.Min(PointB.Y, PointC.Y));
+            double maxY = Math.Max(PointA.Y, Math.Max(PointB.Y, PointC.Y));
+            this.Height = maxY - minY;
+            double minX = Math.Min(PointA.X, Math.Min(PointB.X, PointC.X));
+            double maxX = Math.Max(PointA.X, Math.Max(PointB.X, PointC.X));
+            this.Width = maxX - minX;
+        }
 
-    
+
     }
 }
