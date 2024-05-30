@@ -18,6 +18,11 @@ namespace SimpleVectorGraphicViewer.Model
             throw new NotImplementedException();
         }
 
+        internal override void GetRect()
+        {
+            throw new NotImplementedException();
+        }
+
         internal override Shape GetShape()
         {
             throw new NotImplementedException();

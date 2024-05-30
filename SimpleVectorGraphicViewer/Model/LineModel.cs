@@ -34,6 +34,7 @@ namespace SimpleVectorGraphicViewer.Model
             this.Thickness = Common.DefaultBorderThickness;
             this.GraphicShape = GetShape();
             GetDimensions();
+            GetRect();
         }
         private double GetLenth()
         {
@@ -56,6 +57,11 @@ namespace SimpleVectorGraphicViewer.Model
             this.Width = Math.Abs(PointA.X - PointB.X);
         }
 
-
+        internal override void GetRect()
+        {
+            this.BodyMaxPoint = new Point(Math.Max(this.PointA.X, this.PointB.X), Math.Max(this.PointA.Y, this.PointB.Y));
+            this.BodyMinPoint = new Point(Math.Min(this.PointA.X, this.PointB.X), Math.Min(this.PointA.Y, this.PointB.Y));
+            this.Bounds = new Rect(this.BodyMaxPoint, this.BodyMinPoint);
+        }
     }
 }

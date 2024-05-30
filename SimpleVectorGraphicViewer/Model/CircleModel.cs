@@ -32,6 +32,7 @@ namespace SimpleVectorGraphicViewer.Model
             this.Thickness = Common.DefaultBorderThickness;
             this.GraphicShape = GetShape();
             this.Height = this.Width = 2 * RadiusValue;
+            this.GetRect();
         }
         internal override Shape GetShape()
         {
@@ -48,6 +49,12 @@ namespace SimpleVectorGraphicViewer.Model
         internal override double GetArea()
         {
             return Math.PI * this.RadiusValue * this.RadiusValue;
+        }
+        internal override void GetRect()
+        {
+            this.BodyMaxPoint = new Point(this.CenterPoint.X + RadiusValue , this.CenterPoint.Y + RadiusValue);
+            this.BodyMinPoint = new Point(this.CenterPoint.X - RadiusValue, this.CenterPoint.Y - RadiusValue);
+            this.Bounds = new Rect(this.BodyMaxPoint, BodyMinPoint);
         }
 
        

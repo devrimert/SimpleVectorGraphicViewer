@@ -34,5 +34,10 @@ namespace SimpleVectorGraphicViewer.Model
         {
             throw new NotImplementedException();
         }
+
+        internal override void GetRect()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

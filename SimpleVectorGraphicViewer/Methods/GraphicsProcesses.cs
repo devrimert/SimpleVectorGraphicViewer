@@ -29,7 +29,7 @@ namespace SimpleVectorGraphicViewer.Methods
                     model = item.ToObject<TriangleModel>();
                     break;
             }
-            model.GenerateValues();
+            //model.GenerateValues();
             return model;
         }
         public static Canvas SetCoordinateSystem(this Canvas canvas, Double xMin, Double xMax, Double yMin, Double yMax)

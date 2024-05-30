@@ -13,13 +13,12 @@ using System.CodeDom.Compiler;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Windows.Media;
-using System.Security.Cryptography;
 
 namespace SimpleVectorGraphicViewer.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _windowTitle = "Simple Vector Graphic Viewer", _statusBarText ="Plase open a file.", _activeFilePath = "";
+        private string _windowTitle = "Simple Vector Graphic Viewer", _statusBarText ="Plase open a file.", _activeFilePath = "", _mousePositionText = "";
         private ObservableCollection<GraphicModel> _graphics;
         private GraphicModel _selectedGraphic;
         private double _scale = 1, _scaledWidth, _scaledHeight;
@@ -29,12 +28,14 @@ namespace SimpleVectorGraphicViewer.ViewModel
         public string WindowTitle { get => _windowTitle + " | " + _activeFilePath ; set { _windowTitle = value; OnPropertyChanged(nameof(WindowTitle)); } } 
         public ObservableCollection<GraphicModel> Graphics { get => _graphics; set {_graphics = value; OnPropertyChanged(nameof(Graphics));   } }
         public GraphicModel SelectedGraphic { get => _selectedGraphic; set { _selectedGraphic = value; OnPropertyChanged(nameof(SelectedGraphic)); } }
-        public double Scale { get => _scale; set { _scale = value; OnPropertyChanged(nameof(Scale)); } }
+        public double Scale { get => _scale; set { _scale = value; OnPropertyChanged(nameof(Scale));  } }
         public double ScaledHeight { get => _scaledHeight; set { _scaledHeight = value; OnPropertyChanged(nameof(ScaledHeight)); } }
         public double ScaledWidth { get => _scaledWidth; set { _scaledWidth = value; OnPropertyChanged(nameof(_scaledWidth)); } }
         public string StatusBarText { get => _statusBarText; set { _statusBarText = value; OnPropertyChanged(nameof(StatusBarText)); } }
         public string ActiveFilePath { get => _activeFilePath; set { _activeFilePath = value; OnPropertyChanged(nameof(ActiveFilePath)); } }
         public bool FileOpened { get => !string.IsNullOrEmpty(_activeFilePath); }
+        public string MousePositionText { get => _mousePositionText; set { _mousePositionText = value; OnPropertyChanged(nameof(MousePositionText)); } }    
+        
 
         public ICommand OpenFileCommand { get; }
         public ICommand CloseFileCommand { get; }
@@ -68,13 +69,15 @@ namespace SimpleVectorGraphicViewer.ViewModel
             Common.MainWindow.SizeChanged += MainWindow_SizeChanged;
             Common.MainWindow.Loaded += MainWindow_Loaded;
             Common.MainCanvas.SizeChanged += MainCanvas_SizeChanged;
-
         }
 
+
         private void MainCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
-        {            
+        {
             Common.MainCanvas = (Canvas)sender;
             Common.CanvasCenter = new Point(Common.MainCanvas.ActualWidth / 2, Common.MainCanvas.ActualHeight/2);
+            if (Common.MainCanvas.IsLoaded)
+                SetCanvas();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -83,11 +86,9 @@ namespace SimpleVectorGraphicViewer.ViewModel
         }
 
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
-        {            
-                if (Common.MainCanvas.IsLoaded)
-                    SetCanvas();
-            
-            //MessageBox.Show($"{((Border)((ScrollViewer)Common.MainCanvas.Parent).Parent).ActualHeight} \n {((Border)((ScrollViewer)Common.MainCanvas.Parent).Parent).ActualWidth}");
+        {
+            //if (Common.MainCanvas.IsLoaded)
+                //SetCanvas();
         }
 
         private void SetStatusBarText()
@@ -103,11 +104,7 @@ namespace SimpleVectorGraphicViewer.ViewModel
         {
             double oldscale = Scale;
             Scale -= 0.1;
-            //SetCanvas();
             SetStatusBarText();
-            //MessageBox.Show($"{Common.MainCanvas.ActualHeight} - {Common.MainCanvas.ActualWidth} \n" +
-            //    $"{Common.MainCanvas.Height} - {Common.MainCanvas.Width} \n" +
-            //    $"{Common.MainCanvas.trans} - {Common.MainCanvas.ActualWidth} \n");
 
         }
 
@@ -115,7 +112,6 @@ namespace SimpleVectorGraphicViewer.ViewModel
         {
             double oldscale = Scale;
             Scale += 0.1;
-            //SetCanvas();
             SetStatusBarText();
         }
 
@@ -127,17 +123,30 @@ namespace SimpleVectorGraphicViewer.ViewModel
 
         private void SetCanvas()
         {
+            foreach (UIElement element in Common.MainCanvas.Children)
+            {
+                element.MouseDown -= Element_MouseDown;
+            }
             Common.MainCanvas.Children.Clear();
             ScrollViewer sviewer = (ScrollViewer)Common.MainCanvas.Parent;
             Border brdr = (Border)sviewer.Parent;
-            double newheight = brdr.ActualHeight *2 ;
-            double newwidth = brdr.ActualWidth *2 ;
-            Common.MainCanvas.Height = newheight;
-            Common.MainCanvas.Width = newwidth;
+            //if(Scale ==1)
+            //{
+            //    double newheight = brdr.ActualHeight;
+            //    double newwidth = brdr.ActualWidth;
+            //    Common.MainCanvas.Height = newheight;
+            //    Common.MainCanvas.Width = newwidth;
+            //}
             
-            CreateAxisLines();
-            if(this.Graphics.Count >0) 
+        
+            
+            if(this.Graphics.Count >0)
+            {
+                foreach(GraphicModel model in this.Graphics)
+                    model.GenerateValues();
                 ImplementShapes();
+            }
+            //CreateAxisLines();
             sviewer.ScrollToVerticalOffset(sviewer.ScrollableHeight / 2);
             sviewer.ScrollToHorizontalOffset(sviewer.ScrollableWidth / 2);
         }
@@ -170,32 +179,39 @@ namespace SimpleVectorGraphicViewer.ViewModel
         }
         private void ImplementShapes()
         {
+            List<Rect> boundcollection = new List<Rect>();
+
+            foreach (GraphicModel graphicModel in Graphics)
+                boundcollection.Add(graphicModel.Bounds);
+
+            Rect bounds = Common.GetBoundingRect(boundcollection);
+            Rect canvasBounds = new Rect(0, 0, Common.MainCanvas.ActualWidth, Common.MainCanvas.ActualHeight);
+            double width, height;
+            double newscale = Common.CalculateOptimalCanvas(canvasBounds, bounds,  out height, out width);
+           
+            //Common.MainCanvas.Height = height;
+            //Common.MainCanvas.Width = width;
             foreach (GraphicModel graphicModel in Graphics)
             {
+                //graphicModel.GenerateValues();
                 Shape shape = graphicModel.GraphicShape;
-                //double lefta = (Common.MainCanvas.ActualWidth - graphicModel.Width) / 2;
-                //double topa = (Common.MainCanvas.ActualHeight - graphicModel.Height) / 2;
-                //Canvas.SetLeft(shape, lefta);
-                //Canvas.SetTop(shape, topa);
                 Common.MainCanvas.Children.Add(shape);
             }
+            Common.MainCanvas.Arrange(canvasBounds);
+            //Scale = newscale;
         }
 
         #region 'MenuBarCommands'
         #region 'FileTab'
         private void ExecuteOpenFileCommand(object obj)
         {
+
+            Graphics.Clear();
             string filepath = FileProcesses.SelectSourceFile();
-            Graphics = FileProcesses.GetGraphics(filepath) ?? Graphics;          
-            ImplementShapes();
+            Graphics = FileProcesses.GetGraphics(filepath) ?? Graphics;
+            SetCanvas();
             ActiveFilePath = filepath;
-            SetStatusBarText();
-            foreach (GraphicModel graphicModel in Graphics)
-            {
-                Shape shape = graphicModel.GraphicShape;
-                
-                MessageBox.Show(shape.RenderSize.Width.ToString() + " = " + shape.RenderSize.Height.ToString());
-            }
+            SetStatusBarText();         
             foreach(UIElement element in Common.MainCanvas.Children)
             {
                 element.MouseDown += Element_MouseDown;
@@ -207,38 +223,8 @@ namespace SimpleVectorGraphicViewer.ViewModel
         {
             Shape shape = (Shape)sender;
             MessageBox.Show(shape.RenderSize.Width.ToString());
-        }
-
-        public void AdjustShapeCoordinates()
-        {
-            double canvasCenterX = Common.MainCanvas.ActualWidth / 2;
-            double canvasCenterY = Common.MainCanvas.ActualHeight / 2;
-
-            foreach (var graphic in Graphics)
-            {
-                if (graphic is LineModel line)
-                {
-                    line.PointA = new Point(line.PointA.X + canvasCenterX, canvasCenterY - line.PointA.Y);
-                    line.PointB = new Point(line.PointB.X + canvasCenterX, canvasCenterY - line.PointB.Y);
-                    line.GraphicShape.SetValue(Canvas.LeftProperty, Math.Min(line.PointA.X, line.PointB.X));
-                    line.GraphicShape.SetValue(Canvas.TopProperty, Math.Min(line.PointA.Y, line.PointB.Y));
-                }
-                else if (graphic is CircleModel circle)
-                {
-                    circle.CenterPoint = new Point(circle.CenterPoint.X + canvasCenterX, canvasCenterY - circle.CenterPoint.Y);
-                    circle.GraphicShape.SetValue(Canvas.LeftProperty, circle.CenterPoint.X - circle.RadiusValue);
-                    circle.GraphicShape.SetValue(Canvas.TopProperty, circle.CenterPoint.Y - circle.RadiusValue);
-                }
-                else if (graphic is TriangleModel triangle)
-                {
-                    triangle.PointA = new Point(triangle.PointA.X + canvasCenterX, canvasCenterY - triangle.PointA.Y);
-                    triangle.PointB = new Point(triangle.PointB.X + canvasCenterX, canvasCenterY - triangle.PointB.Y);
-                    triangle.PointC = new Point(triangle.PointC.X + canvasCenterX, canvasCenterY - triangle.PointC.Y);
-                    triangle.GraphicShape.SetValue(Canvas.LeftProperty, Math.Min(Math.Min(triangle.PointA.X, triangle.PointB.X), triangle.PointC.X));
-                    triangle.GraphicShape.SetValue(Canvas.TopProperty, Math.Min(Math.Min(triangle.PointA.Y, triangle.PointB.Y), triangle.PointC.Y));
-                }
-            }
-        }
+            Point mousePos = e.GetPosition(Common.MainCanvas);
+        }              
 
         private void ExecuteCloseFileCommand(object obj)
         {

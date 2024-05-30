@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -18,11 +19,15 @@ namespace SimpleVectorGraphicViewer.Model
         internal GType GraphicType { get; set; }
         internal SolidColorBrush ColorBrush { get; set; }
         internal double Thickness { get; set; }
-        internal abstract Shape GetShape();
         public Shape GraphicShape { get; set; }
-        internal abstract void GenerateValues();
         public double Width { get; set; }
         public double Height { get; set; }
+        public Point BodyMaxPoint { get; set; }
+        public Point BodyMinPoint { get; set; }
+        public Rect Bounds { get; set; }
+        internal abstract void GenerateValues();
+        internal abstract void GetRect();
+        internal abstract Shape GetShape();
         internal enum GType
         {
             Line =0,

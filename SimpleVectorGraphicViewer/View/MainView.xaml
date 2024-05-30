@@ -43,23 +43,19 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="200" MaxWidth="250" MinWidth="100"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>           
             
             <!--Viewport-->
             <Border Grid.Column="0">
-                <ScrollViewer x:Name="MainScrollViewer" Background="Black" HorizontalScrollBarVisibility="Visible"                              
-                              
-                              VerticalScrollBarVisibility="Visible"
-                              HorizontalContentAlignment="Center"
-                              VerticalContentAlignment="Center">
-                    <Canvas x:Name="Viewport" Background="Black"
-                                                helpers:ZoomBehavior.IsEnabled="True"
-helpers:ZoomBehavior.ZoomFactor="0.1"
-helpers:ZoomBehavior.ScrollViewer="{Binding ElementName=MainScrollViewer}"
-                            Width="{Binding ScaledWidth}" Height="{Binding ScaledHeight}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ScrollViewer x:Name="MainScrollViewer" Background="Black" 
+                              HorizontalScrollBarVisibility="Hidden "                                                      
+                              VerticalScrollBarVisibility="Hidden">
+                    <Canvas x:Name="Viewport" Background="Black" 
+                            HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Stretch">
                         <Canvas.RenderTransform>
-                            <ScaleTransform CenterX="300" CenterY="300" ScaleX="{Binding Scale}" ScaleY="{Binding Scale}" />
+                            <ScaleTransform ScaleX="{Binding Scale}" ScaleY="{Binding Scale}" />
                         </Canvas.RenderTransform>
                         
                     </Canvas>
@@ -73,7 +69,17 @@ helpers:ZoomBehavior.ScrollViewer="{Binding ElementName=MainScrollViewer}"
         </Grid>
         <Grid Grid.Row="2">
             <Border  BorderBrush="DarkGray" BorderThickness="0,2,0,0">
-                <TextBlock Text="{Binding StatusBarText}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding StatusBarText}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="auto"/>
+                    <Separator/>
+                    <TextBlock Text="{Binding MousePositionText}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="auto"/>
+                    <Separator/>
+                    <TextBlock Text="{Binding ActiveFilePath}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="auto"/>
+                    <Separator/>
+                    <TextBlock Text="{Binding Scale}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="auto"/>
+                    <Separator/>
+                    <TextBlock Text="{Binding Scale}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="auto"/>
+                </StackPanel>
             </Border>
         </Grid>
         

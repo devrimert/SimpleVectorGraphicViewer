@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows;
 
 namespace SimpleVectorGraphicViewer.Methods.EventHelpers
 {
@@ -47,6 +45,7 @@ namespace SimpleVectorGraphicViewer.Methods.EventHelpers
         public static ScrollViewer GetScrollViewer(DependencyObject attachingElement) => (ScrollViewer)attachingElement.GetValue(ZoomBehavior.ScrollViewerProperty);
 
         #endregion
+
         private static void OnIsEnabledChanged(DependencyObject attachingElement, DependencyPropertyChangedEventArgs e)
         {
             if (!(attachingElement is FrameworkElement frameworkElement))
@@ -58,6 +57,9 @@ namespace SimpleVectorGraphicViewer.Methods.EventHelpers
             if (isEnabled)
             {
                 frameworkElement.PreviewMouseWheel += ZoomBehavior.Zoom_OnMouseWheel;
+                frameworkElement.SizeChanged += ZoomBehavior.OnSizeChanged;
+                frameworkElement.LayoutUpdated += ZoomBehavior.OnLayoutUpdated;
+
                 if (ZoomBehavior.TryGetScaleTransform(frameworkElement, out _))
                 {
                     return;
@@ -75,6 +77,8 @@ namespace SimpleVectorGraphicViewer.Methods.EventHelpers
             else
             {
                 frameworkElement.PreviewMouseWheel -= ZoomBehavior.Zoom_OnMouseWheel;
+                frameworkElement.SizeChanged -= ZoomBehavior.OnSizeChanged;
+                frameworkElement.LayoutUpdated -= ZoomBehavior.OnLayoutUpdated;
             }
         }
 
@@ -102,8 +106,8 @@ namespace SimpleVectorGraphicViewer.Methods.EventHelpers
             scaleTransform.CenterX = mouseCanvasPosition.X;
             scaleTransform.CenterY = mouseCanvasPosition.Y;
 
-            scaleTransform.ScaleX = Math.Max(0.1, scaleTransform.ScaleX + scaleFactor);
-            scaleTransform.ScaleY = Math.Max(0.1, scaleTransform.ScaleY + scaleFactor);
+            scaleTransform.ScaleX = Math.Max(0.5, scaleTransform.ScaleX + scaleFactor);
+            scaleTransform.ScaleY = Math.Max(0.5, scaleTransform.ScaleY + scaleFactor);
         }
 
         private static void AdjustScrollViewer(Point mouseCanvasPosition, double scaleFactor, FrameworkElement zoomTargetElement)
@@ -132,6 +136,48 @@ namespace SimpleVectorGraphicViewer.Methods.EventHelpers
             }
 
             return scaleTransform != null;
+        }
+
+        private static void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var frameworkElement = sender as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                EnsureAllChildrenVisible(frameworkElement);
+            }
+        }
+
+        private static void OnLayoutUpdated(object sender, EventArgs e)
+        {
+            var frameworkElement = sender as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                EnsureAllChildrenVisible(frameworkElement);
+            }
+        }
+
+        private static void EnsureAllChildrenVisible(FrameworkElement frameworkElement)
+        {
+            if (!TryGetScaleTransform(frameworkElement, out ScaleTransform scaleTransform))
+            {
+                return;
+            }
+
+            var children = ((Canvas)frameworkElement).Children.OfType<FrameworkElement>();
+            foreach (var child in children)
+            {
+                var childBounds = child.TransformToAncestor(frameworkElement).TransformBounds(new Rect(0, 0, child.ActualWidth, child.ActualHeight));
+
+                if (childBounds.Left < 0 || childBounds.Top < 0 ||
+                    childBounds.Right > frameworkElement.ActualWidth ||
+                    childBounds.Bottom > frameworkElement.ActualHeight)
+                {
+                    // Perform Zoom Out
+                    scaleTransform.ScaleX = Math.Max(0.5, scaleTransform.ScaleX - 0.1);
+                    scaleTransform.ScaleY = Math.Max(0.5, scaleTransform.ScaleY - 0.1);
+                    return; // After adjusting zoom, exit to allow layout to update
+                }
+            }
         }
     }
 }

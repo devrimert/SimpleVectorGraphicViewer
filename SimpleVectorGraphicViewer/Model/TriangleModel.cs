@@ -5,6 +5,7 @@ using SimpleVectorGraphicViewer.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,7 @@ namespace SimpleVectorGraphicViewer.Model
             this.Thickness = Common.DefaultBorderThickness;
             this.GraphicShape = GetShape();
             GetDimensions();
+            GetRect();
         }
 
         internal override double GetArea()
@@ -76,6 +78,12 @@ namespace SimpleVectorGraphicViewer.Model
             double minX = Math.Min(PointA.X, Math.Min(PointB.X, PointC.X));
             double maxX = Math.Max(PointA.X, Math.Max(PointB.X, PointC.X));
             this.Width = maxX - minX;
+        }
+        internal override void GetRect()
+        {
+            this.BodyMaxPoint = new Point(Math.Max(PointA.X, Math.Max(PointB.X, PointC.X)), Math.Max(PointA.Y, Math.Max(PointB.Y, PointC.Y)));
+            this.BodyMinPoint = new Point(Math.Min(PointA.X, Math.Min(PointB.X, PointC.X)), Math.Min(PointA.Y, Math.Min(PointB.Y, PointC.Y)));
+            this.Bounds = new Rect(this.BodyMaxPoint, this.BodyMinPoint);
         }
 
 
