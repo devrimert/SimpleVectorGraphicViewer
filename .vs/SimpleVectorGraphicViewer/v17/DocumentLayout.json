@@ -3,8 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewerv2\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewerv2\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|solutionrelative:simplevectorgraphicviewerv2\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewerv2\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|solutionrelative:simplevectorgraphicviewerv2\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SimpleVectorGraphicViewerV2||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\simplevectorgraphicviewerv2\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|solutionrelative:simplevectorgraphicviewerv2\\view\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31CA8304-0F14-434B-905B-072C63D352F0}|SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj|c:\\users\\dmakc\\source\\repos\\simplevectorgraphicviewer\\simplevectorgraphicviewerv2\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +37,50 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\App.xaml",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewerV2\\App.xaml",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\App.xaml",
+              "RelativeToolTip": "SimpleVectorGraphicViewerV2\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T20:05:25.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\App.config",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewerV2\\App.config",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\App.config",
+              "RelativeToolTip": "SimpleVectorGraphicViewerV2\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-31T20:05:22.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SimpleVectorGraphicViewerV2",
+              "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj",
+              "RelativeDocumentMoniker": "SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj",
+              "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj",
+              "RelativeToolTip": "SimpleVectorGraphicViewerV2\\SimpleVectorGraphicViewerV2.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-31T20:00:20.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainView.xaml",
               "DocumentMoniker": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\View\\MainView.xaml",
               "RelativeDocumentMoniker": "SimpleVectorGraphicViewerV2\\View\\MainView.xaml",
               "ToolTip": "C:\\Users\\dmakc\\source\\repos\\SimpleVectorGraphicViewer\\SimpleVectorGraphicViewerV2\\View\\MainView.xaml",
               "RelativeToolTip": "SimpleVectorGraphicViewerV2\\View\\MainView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T19:54:11.251Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T19:54:11.251Z"
             }
           ]
         }
