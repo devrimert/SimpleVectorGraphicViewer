@@ -1,0 +1,23 @@
+<Roots>
+<Root>
+  <type>line</type>
+  <a>-1,5; 3,4</a>
+  <b>2,2; 5,7</b>
+  <color>127; 255; 255; 255</color>
+</Root>
+<Root>
+  <type>circle</type>
+  <center>0; 0</center>
+  <radius>15.0</radius>
+  <filled>false</filled>
+  <color>127; 255; 0; 0</color>
+</Root>
+<Root>
+  <type>triangle</type>
+  <a>-15; -20</a>
+  <b>15; -20,3</b>
+  <c>0; 21</c>
+  <filled>true</filled>
+  <color>127; 255; 0; 255</color>
+</Root>
+</Roots>

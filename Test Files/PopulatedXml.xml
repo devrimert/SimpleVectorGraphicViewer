@@ -1,0 +1,52 @@
+<Roots>
+<Root>
+  <type>line</type>
+  <a>-1,5; 3,4</a>
+  <b>2,2; 5,7</b>
+  <color>127; 255; 255; 255</color>
+</Root>
+<Root>
+  <type>circle</type>
+  <center>0; 0</center>
+  <radius>15.0</radius>
+  <filled>false</filled>
+  <color>127; 255; 0; 0</color>
+</Root>
+<Root>
+  <type>ellipse</type>
+  <center>40; -20</center>
+  <width>35.0</width>
+  <height>25.0</height>
+  <filled>true</filled>
+  <color>127; 255; 0; 0</color>
+</Root>
+<Root>
+  <type>triangle</type>
+  <a>-15; -20</a>
+  <b>15; -20,3</b>
+  <c>0; 21</c>
+  <filled>true</filled>
+  <color>127; 255; 0; 255</color>
+</Root>
+<Root>
+  <type>rectangle</type>
+  <a>-47; 110</a>
+  <b>125; 120,3</b>
+  <c>125; 34</c>
+  <d>-60; 54</d>
+  <filled>true</filled>
+  <color>127; 255; 0; 255</color>
+</Root>
+<Root>
+  <type>polygon</type>
+  <a>-150; -150</a>
+  <b>-130; -130</b>
+  <c>-130; -110</c>
+  <d>-60; -110</d>
+  <e>60; -150</e>
+  <f>0; -150,3</f>
+  <g>-20; -140</g>
+  <filled>true</filled>
+  <color>127; 255; 0; 255</color>
+</Root>
+</Roots>
