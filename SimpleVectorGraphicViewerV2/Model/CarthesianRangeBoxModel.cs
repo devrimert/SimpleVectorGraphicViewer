@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.Generic;
 using SimpleVectorGraphicViewerV2.Statics;
 
 namespace SimpleVectorGraphicViewerV2.Model
@@ -18,6 +14,7 @@ namespace SimpleVectorGraphicViewerV2.Model
         public double Height { get; set; }
         public double RequiredViewportWidth {  get; set; }
         public double RequiredViewportHeight { get; set; }
+
         public CarthesianRangeBoxModel(List<string> Points) 
         {
             double minX, minY, maxX, maxY;
@@ -43,10 +40,22 @@ namespace SimpleVectorGraphicViewerV2.Model
 
             Generate(minX, maxX, minY, maxY);
         }
+        public CarthesianRangeBoxModel(string Point, double Width, double Height)
+        {
+            double minX, minY, maxX, maxY;
+            Point centerPoint = CarthesianMethods.GetCarthesianPointFromString(Point);
+            maxX = centerPoint.X + (Width/2);
+            maxY = centerPoint.Y + (Height / 2);
+            minX = centerPoint.X - (Width / 2);
+            minY = centerPoint.Y - (Height / 2);
+
+            Generate(minX, maxX, minY, maxY);
+        }
         public CarthesianRangeBoxModel(double minX,  double maxX, double minY, double maxY)
         {
             Generate(minX, maxX, minY, maxY);   
         }       
+
         private void Generate(double minX, double maxX, double minY, double maxY)
         {
             MinPoint = new Point(minX, minY);

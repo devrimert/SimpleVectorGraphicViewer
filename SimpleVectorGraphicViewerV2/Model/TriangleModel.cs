@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json;
-using SimpleVectorGraphicViewerV2.Statics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System;
 using System.Xml;
-using System.Xml.Serialization;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using SimpleVectorGraphicViewerV2.Statics;
 
 namespace SimpleVectorGraphicViewerV2.Model
 {
@@ -19,9 +14,7 @@ namespace SimpleVectorGraphicViewerV2.Model
         internal string CarthesianB { get; set; }
         [JsonProperty("c")]
         internal string CarthesianC { get; set; }
-        internal Point CanvasA { get; set; }
-        internal Point CanvasB { get; set; }
-        internal Point CanvasC { get; set; }
+
         internal TriangleModel()
         {
         }
@@ -34,21 +27,24 @@ namespace SimpleVectorGraphicViewerV2.Model
             this.CarthesianC = XmlNode.SelectSingleNode("c")?.InnerText;
             this.Filled = XmlNode.SelectSingleNode("filled")?.InnerText;
         }
+
         internal override void Generate()
         {
             this.GetRectangle();
+            this.GetGeo();
         }
-
-        internal override double GetArea()
+        internal override void GetGeo()
         {
-            throw new NotImplementedException();
+            double side1 = CarthesianMethods.CalculateDistanceBetweenPoints(CarthesianMethods.GetCarthesianPointFromString(CarthesianA), CarthesianMethods.GetCarthesianPointFromString(CarthesianB));
+            double side2 = CarthesianMethods.CalculateDistanceBetweenPoints(CarthesianMethods.GetCarthesianPointFromString(CarthesianB), CarthesianMethods.GetCarthesianPointFromString(CarthesianC));
+            double side3 = CarthesianMethods.CalculateDistanceBetweenPoints(CarthesianMethods.GetCarthesianPointFromString(CarthesianC), CarthesianMethods.GetCarthesianPointFromString(CarthesianA));
+            this.Perimeter = side1+side2+side3;
+            double avgLenth = (side1 + side2 + side3) / 2;
+            this.Area =  Math.Sqrt(avgLenth * (avgLenth - side1) * (avgLenth - side2) * (avgLenth - side3));
         }
-
         internal override void GetRectangle()
         {
             this.RangeBox = new CarthesianRangeBoxModel(new List<string> { CarthesianA, CarthesianB, CarthesianC });
-        }
-
-       
+        }       
     }
 }

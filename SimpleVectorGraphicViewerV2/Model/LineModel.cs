@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System.Xml;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Xml;
-using System.Xml.Serialization;
+using SimpleVectorGraphicViewerV2.Statics;
 
 namespace SimpleVectorGraphicViewerV2.Model
 {
@@ -16,8 +11,8 @@ namespace SimpleVectorGraphicViewerV2.Model
         internal string CarthesianA { get; set; }
         [JsonProperty("b")]
         internal string CarthesianB { get; set; }
-        internal Point CanvasA { get; set; }
-        internal Point CanvasB { get; set; }
+        internal double Length { get; set; }
+
         internal LineModel() { }
         internal LineModel(XmlNode XmlNode)
         {
@@ -30,11 +25,15 @@ namespace SimpleVectorGraphicViewerV2.Model
         internal override void Generate()
         {
             GetRectangle();
+            GetLength();
         }
-
         internal override void GetRectangle()
         {
             this.RangeBox = new CarthesianRangeBoxModel(new List<string> { CarthesianA, CarthesianB });
+        }
+        internal void GetLength()
+        {
+            this.Length = CarthesianMethods.CalculateDistanceBetweenPoints(CarthesianMethods.GetCarthesianPointFromString(CarthesianA), CarthesianMethods.GetCarthesianPointFromString(CarthesianB)); 
         }
     }
 }

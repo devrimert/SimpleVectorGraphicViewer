@@ -4,12 +4,10 @@ C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\SimpleVectorGraphicViewerV2.csproj.AssemblyReference.cache
-C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\MainWindow.g.cs
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\View\MainView.g.cs
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\App.g.cs
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\SimpleVectorGraphicViewerV2_MarkupCompile.cache
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\SimpleVectorGraphicViewerV2_MarkupCompile.lref
-C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\MainWindow.baml
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\View\MainView.baml
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\SimpleVectorGraphicViewerV2.g.resources
 C:\Users\dmakc\source\repos\SimpleVectorGraphicViewer\SimpleVectorGraphicViewerV2\obj\Debug\SimpleVectorGraphicViewerV2.Properties.Resources.resources

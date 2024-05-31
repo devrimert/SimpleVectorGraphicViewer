@@ -58,26 +58,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\PolygonModel.cs" />
+    <Compile Include="Model\RectangleModel.cs" />
     <Compile Include="Statics\CanvasMethods.cs" />
     <Compile Include="Statics\CarthesianMethods.cs" />
     <Compile Include="Statics\Common.cs" />
     <Compile Include="Statics\FileMethods.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\ViewModelCommand.cs" />
+    <Compile Include="Statics\PropertyViewerMethods.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MainView.xaml">
@@ -86,7 +78,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CircleModel.cs" />
+    <Compile Include="Model\EllipseModel.cs" />
     <Compile Include="Model\GraphicModel.cs" />
     <Compile Include="Model\LineModel.cs" />
     <Compile Include="Model\CarthesianRangeBoxModel.cs" />
@@ -117,6 +109,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\AppIco.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

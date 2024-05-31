@@ -1,15 +1,16 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json.Linq;
-using SimpleVectorGraphicViewerV2.Model;
-using System;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.IO;
 using System.Xml;
+using System.Collections.ObjectModel;
+using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
+using SimpleVectorGraphicViewerV2.Model;
 
 namespace SimpleVectorGraphicViewerV2.Statics
 {
     internal static class FileMethods
     {
+        #region 'File Selection'
         public static string SelectSourceFile()
         {
             string selectedFilePath = null;
@@ -23,7 +24,10 @@ namespace SimpleVectorGraphicViewerV2.Statics
                 selectedFilePath = openFileDialog.FileName;
             return selectedFilePath;
         }
-        public static ObservableCollection<GraphicModel> GetGraphics(string path)
+        #endregion
+
+        #region 'Graphic Creation
+        internal static ObservableCollection<GraphicModel> GetGraphics(string path)
         {
             ObservableCollection<GraphicModel> graphics = new ObservableCollection<GraphicModel>();
             if (path.EndsWith(".json"))
@@ -43,6 +47,7 @@ namespace SimpleVectorGraphicViewerV2.Statics
             return graphics;
         }
 
+        #region 'JSON'
         private static JArray GetJsonArray(string path)
         {
             string fileContent = File.ReadAllText(path);
@@ -57,17 +62,29 @@ namespace SimpleVectorGraphicViewerV2.Statics
                 case "line":
                     model = item.ToObject<LineModel>();
                     break;
-                case "circle":
-                    model = item.ToObject<CircleModel>();
+                case "circle" :
+                    model = item.ToObject<EllipseModel>();
                     break;
                 case "triangle":
                     model = item.ToObject<TriangleModel>();
+                    break;
+                case "ellipse":
+                    model = item.ToObject<EllipseModel>();
+                    break;
+                case "rectangle":
+                    model = item.ToObject<RectangleModel>();
+                    break;
+                case "polygon":
+                    model = new PolygonModel(item) ;
                     break;
                 default:
                     throw new InvalidOperationException($"Unknown type: {type}");
             }
             return model;
-        }     
+        }
+        #endregion
+
+        #region 'XML'
         private static XmlNodeList GetXmlNodes(string path)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -84,15 +101,26 @@ namespace SimpleVectorGraphicViewerV2.Statics
                     model = new LineModel(item);
                     break;
                 case "circle":
-                    model = new CircleModel(item);
+                    model = new EllipseModel(item);
+                    break;
+                case "ellipse":
+                    model = new EllipseModel(item);
                     break;
                 case "triangle":
                     model = new TriangleModel(item);
+                    break;
+                case "rectangle":
+                    model = new RectangleModel(item);
+                    break;
+                case "polygon":
+                    model = new PolygonModel(item);
                     break;
                 default:
                     throw new InvalidOperationException($"Unknown type: {type}");
             }
             return model;
-        }          
+        }
+        #endregion
+        #endregion
     }
 }

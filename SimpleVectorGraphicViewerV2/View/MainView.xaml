@@ -5,62 +5,79 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleVectorGraphicViewerV2.View"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800" MinWidth="400" MinHeight="450" SizeChanged="Window_SizeChanged">
+        Icon="/Images/AppIco.ico"
+        Title="Simple Vector Graphic Viewer" Foreground="DarkGray" Background="#2e3c49" Height="450" FontSize="14" Width="800" MinWidth="400" MinHeight="450" SizeChanged="Window_SizeChanged" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
             <!--Top Menu Bar-->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
             <!--Event Center-->
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
             <!--Status Bar-->
+            <RowDefinition Height="25"/>
+            
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0,0,0,2">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open" Command="{Binding OpenFileCommand}"/>
+        <!--Top Menu Bar-->
+        <Menu Grid.Row="0" BorderThickness="0,0,0,2" Background="#2e3c49">
+            <MenuItem Header="_File" Foreground="DarkGray" >
+                <MenuItem Header="_Open" x:Name="OpenFileBtn" Click="OpenFileBtn_Click" Foreground="Black"/>
+                <MenuItem Header="_Close" x:Name="CloseFileBtn" Click="CloseFileBtn_Click" Foreground="Black" />
                 <Separator/>
-                <MenuItem Header="E_xit" Click="MenuItem_Click"/>
+                <MenuItem Header="E_xit" x:Name="CloseProgramBtn" Click="CloseProgramBtn_Click" Foreground="Black" />
+            </MenuItem>
+            <MenuItem Header="_View" Foreground="DarkGray">
+                <MenuItem Header="Show Axis Lines" Foreground="Black">
+                    <CheckBox x:Name="ShowAxisCB" Content="Program will create X and Y Axis lines." IsChecked="True" Checked="ShowAxisCB_Checked" Unchecked="ShowAxisCB_Checked"/>
+                </MenuItem>
+                <MenuItem Header="Scale In" Foreground="Black">
+                    <CheckBox x:Name="ScaleInCB" Content="Program will scale in if the shape is too small."/>
+                </MenuItem>               
+                <MenuItem Header="M_inimize Window" x:Name="MinimizeBtn" Click="MinimizeBtn_Click" Foreground="Black"/>
+                <MenuItem Header="M_aximize Window" x:Name="MaximizeBtn" Click="MaximizeBtn_Click" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem Header="_About" Foreground="DarkGray">
+                <MenuItem Header="Developer's _LinkedIn Page" x:Name="LinkedInPageBtn" Click="LinkedInPageBtn_Click" Foreground="Black"/>
+                <MenuItem Header="Developer's _GitHub Page" x:Name="GitHubPageBtn" Click="GitHubPageBtn_Click" Foreground="Black"/>
+                <MenuItem Header="Develoepr's _Xing Page" x:Name="XingPagEBtn" Click="XingPagEBtn_Click"  Foreground="Black"/>
             </MenuItem>
         </Menu>
+        <!--/Top Menu Bar-->
+        <!--Event Center-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/> <!--Viewport-->
+                <ColumnDefinition Width="200"/> <!--PropertyGrid-->
             </Grid.ColumnDefinitions>
 
             <!--Viewport-->
             <Border Grid.Column="0" >
-                <ScrollViewer Background="Black" CanContentScroll="False"
-                     HorizontalScrollBarVisibility="Hidden"                                                      
-                     VerticalScrollBarVisibility="Hidden">
-                    <Canvas x:Name="canvas" MinHeight="75" MinWidth="75"
-                   Background="Black" 
-                   HorizontalAlignment="Stretch" 
-                   VerticalAlignment="Stretch"
-                   MouseMove="canvas_MouseMove"
-                   Loaded="canvas_Loaded"
-                   PreviewMouseWheel="canvas_PreviewMouseWheel">
-                        
-                    </Canvas>
+                <ScrollViewer Background="#132130" CanContentScroll="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                    <Canvas x:Name="canvas" MinHeight="75" MinWidth="75" Background="#132130" HorizontalAlignment="Center"  VerticalAlignment="Center"
+                            MouseMove="canvas_MouseMove" Loaded="canvas_Loaded" PreviewMouseWheel="canvas_PreviewMouseWheel"/>
                 </ScrollViewer>
             </Border>
-           
+            <!--/Viewport-->
+            
+            <!--PropertyGrid-->
+            <Border Grid.Column="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <DataGrid x:Name="PropertyViewDG" Background="#2e3c49" HeadersVisibility="None" AutoGenerateColumns="True" IsReadOnly="True" />
+                </ScrollViewer>                                  
+            </Border>           
+            <!--/PropertyGrid-->
         </Grid>
+        <!--/EventCenter-->
+        <!--Status Bar-->
         <Border Grid.Row="2">
-            <Grid>
+            <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Separator/>
-                <TextBlock x:Name="mousePoText" Text="asdfdssdfg" Grid.Column="0" Foreground="Black" FontSize="14"  HorizontalAlignment="Left" Margin ="5,0,0,5"/>
-                <!--<Separator/>
-                <TextBlock Text="{Binding ActiveFilePath}" Grid.Column="1" Foreground="Black" FontSize="14" HorizontalAlignment="Center" Margin ="5,0,0,5"/>
-                <Separator/>
-                <TextBlock Text="{Binding CurrentScale}" Grid.Column="2" Foreground="Black" FontSize="14"  HorizontalAlignment="Right" Margin ="5,0,0,5"/>
-                <Separator/>-->
+                <TextBlock x:Name="mousePosTB" Grid.Column="0" HorizontalAlignment="Left" Margin ="5,0,0,5"/>
+                <TextBlock x:Name="activeFileNameTB" Grid.Column="1" HorizontalAlignment="Center" Margin ="5,0,0,5"/>
+                <TextBlock x:Name="currentScaleTB" Grid.Column="2" HorizontalAlignment="Right" Margin ="5,0,0,5"/>
             </Grid>
         </Border>
+        <!--/Status Bar-->
     </Grid>
 </Window>

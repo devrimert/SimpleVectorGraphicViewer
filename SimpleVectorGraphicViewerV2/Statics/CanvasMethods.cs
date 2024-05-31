@@ -1,55 +1,22 @@
-﻿using SimpleVectorGraphicViewerV2.Model;
-using System;
-using System.Globalization;
-using System.Runtime.CompilerServices;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
+using System.Globalization;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using System.Windows.Controls;
+using SimpleVectorGraphicViewerV2.Model;
 
 namespace SimpleVectorGraphicViewerV2.Statics
 {
     internal static class CanvasMethods
     {
         #region 'Canvas Transitions'
-        internal static Point GetCanvasPoint(this Canvas Canvas, string Point)
-        {
-            try
-            {
-                CultureInfo culture = CultureInfo.InvariantCulture;
-                string[] values = Point.Split(';');
-
-                double x = (Canvas.Width / 2) + double.Parse(values[0].Replace(',', '.'), culture);
-                double y = (Canvas.Height / 2) + double.Parse(values[1].Replace(',', '.'), culture);
-                return new Point(x, Canvas.Height - y);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Canvas point parsing error: " + ex.Message);
-                throw ex;
-            }
-        }
-        internal static Point GetCanvasPoint(this Canvas Canvas, Point Point)
-        {
-            try
-            {
-                double x = (Canvas.Width / 2) + Point.X;
-                double y = (Canvas.Height / 2) + Point.Y;
-                return new Point(x, Canvas.Height - y);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Canvas point moving error: " + ex.Message);
-                throw ex;
-            }
-        }
-        internal static Rect GetCanvasRect(this Canvas Canvas, CarthesianRangeBoxModel RangeBox)
-        {
-            return new Rect(Canvas.GetCanvasPoint(RangeBox.MinPoint), Canvas.GetCanvasPoint(RangeBox.MaxPoint));
-        }
-        public static SolidColorBrush GetSolidColorBrush(string argbString)
+        /// <summary>
+        /// Converts color string to color brush.
+        /// </summary>
+        /// <param name="argbString">ARGB string of desired color.</param>
+        /// <returns>Retruns SolidColorBrush object of given string.</returns>
+        internal static SolidColorBrush GetSolidColorBrush(string argbString)
         {
             try
             {
@@ -66,13 +33,82 @@ namespace SimpleVectorGraphicViewerV2.Statics
                 return null;
             }
         }
+        /// <summary>
+        /// Gets the mouse position with canvas transformation.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="MousePosition">The mouse position desired to be converted.</param>
+        /// <returns>Converted mouse point.</returns>
+        internal static Point GetMousePositionOnCanvas(this Canvas Canvas, Point MousePosition)
+        {
+            return new Point(((Canvas.Width / 2) - MousePosition.X)*-1, (Canvas.Height / 2) - MousePosition.Y);
+        }
+        /// <summary>
+        /// Converts point string to a Point object and transforms that to canvas coordinate
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Point">Carthesian Point string.</param>
+        /// <returns>Canvas Point</returns>
+        private static Point GetCanvasPoint(this Canvas Canvas, string Point)
+        {
+            try
+            {
+                CultureInfo culture = CultureInfo.InvariantCulture;
+                string[] values = Point.Split(';');
+
+                double x = (Canvas.Width / 2) + double.Parse(values[0].Replace(',', '.'), culture);
+                double y = (Canvas.Height / 2) + double.Parse(values[1].Replace(',', '.'), culture);
+                return new Point(x, Canvas.Height - y);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Canvas point parsing error: " + ex.Message);
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Converts and transforms a carthesian point to a Canvas point.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Point">Carthesian Point/</param>
+        /// <returns>Canvas Point</returns>
+        private static Point GetCanvasPoint(this Canvas Canvas, Point Point)
+        {
+            try
+            {
+                double x = (Canvas.Width / 2) + Point.X;
+                double y = (Canvas.Height / 2) + Point.Y;
+                return new Point(x, Canvas.Height - y);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Canvas point moving error: " + ex.Message);
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Converts a Carthesian RangeBox to Canvas Rect.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="RangeBox">Carthesian Range Box</param>
+        /// <returns>Canvas Rect</returns>
+        private static Rect GetCanvasRect(this Canvas Canvas, CarthesianRangeBoxModel RangeBox)
+        {
+            return new Rect(Canvas.GetCanvasPoint(RangeBox.MinPoint), Canvas.GetCanvasPoint(RangeBox.MaxPoint));
+        }
         #endregion
 
-        #region 'Shape Creation
-        public static void CreateAxisLines(this Canvas Canvas, double Scale)
+        #region 'Shape Creation'
+        /// <summary>
+        /// Creates the axis lines with desired scale. Axis lines always will be 1px thick on the screen.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Scale">Desired Scale</param>
+        internal static void CreateAxisLines(this Canvas Canvas, double Scale)
         {
             double thickness = 1 / Scale;
             Line xLine = new Line();
+            xLine.Name = "xAxis";
             xLine.X1 = (Canvas.Width / 2) * -1;
             xLine.Y1 = 0;
             xLine.X2 = (Canvas.Width / 2);
@@ -85,6 +121,7 @@ namespace SimpleVectorGraphicViewerV2.Statics
             Canvas.SetTop(xLine, top);
             Canvas.Children.Add(xLine);
             Line yLine = new Line();
+            yLine.Name = "yAxis";
             yLine.X1 = 0;
             yLine.Y1 = (Canvas.Height / 2) * -1;
             yLine.X2 = 0;
@@ -97,15 +134,29 @@ namespace SimpleVectorGraphicViewerV2.Statics
             Canvas.SetTop(yLine, top);
             Canvas.Children.Add(yLine);
         }
-        public static void AddCarthesianShape(this Canvas Canvas, GraphicModel Model)
+        /// <summary>
+        /// Adds a Shape to the canvas by desired Graphic Model.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired Graohic Model</param>
+        internal static void AddCarthesianShape(this Canvas Canvas, GraphicModel Model)
         {
             if (Model is LineModel line)
                 Canvas.AddLineModel(line);
-            else if (Model is CircleModel circle)
+            else if (Model is EllipseModel circle)
                 Canvas.AddCircleModel(circle);
             else if (Model is TriangleModel triangle)
                 Canvas.AddTriangleModel(triangle);
+            else if (Model is RectangleModel rectangle)
+                Canvas.AddRectangleModel(rectangle);
+            else if (Model is PolygonModel polygon)
+                Canvas.AddPolygonModel(polygon);
         }
+        /// <summary>
+        /// Adds a line inside of the Canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired Line Model.</param>
         private static void AddLineModel(this Canvas Canvas, LineModel Model)
         {
             Line line = new Line();
@@ -115,20 +166,32 @@ namespace SimpleVectorGraphicViewerV2.Statics
             line.Y2 = Canvas.GetCanvasPoint(Model.CarthesianB).Y;
             line.Stroke = GetSolidColorBrush(Model.Color);
             line.StrokeThickness = Common.DefaultShapeThickness;
+            line.Name = Model.Type + GetShapeCount(Canvas,Model.Type);
             Canvas.Children.Add(line);
         }
-        private static void AddCircleModel(this Canvas Canvas, CircleModel Model)
+        /// <summary>
+        /// Adds a circle or ellipse inside of the Canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired Circle or Ellipse</param>
+        private static void AddCircleModel(this Canvas Canvas, EllipseModel Model)
         {
             Ellipse ellipse = new Ellipse();
-            ellipse.Width = Model.RangeBox.Width;
-            ellipse.Height = Model.RangeBox.Height;
+            ellipse.Width = Model.WidthValue;
+            ellipse.Height = Model.HeightValue;
             ellipse.SetValue(Canvas.LeftProperty, Canvas.GetCanvasRect(Model.RangeBox).Left);
             ellipse.SetValue(Canvas.TopProperty, Canvas.GetCanvasRect(Model.RangeBox).Top);
             ellipse.Stroke = GetSolidColorBrush(Model.Color);
             ellipse.StrokeThickness = Common.DefaultShapeThickness;
             ellipse.Fill = Model.Filled == "true" ? GetSolidColorBrush(Model.Color) : Brushes.Transparent;
+            ellipse.Name = Model.Type + GetShapeCount(Canvas, Model.Type);
             Canvas.Children.Add(ellipse);
         }
+        /// <summary>
+        /// Adds a triangle inside of the Canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired triangle.</param>
         private static void AddTriangleModel(this Canvas Canvas, TriangleModel Model)
         {
             PathFigure pathFigure = new PathFigure();
@@ -142,73 +205,167 @@ namespace SimpleVectorGraphicViewerV2.Statics
             path.Data = pathGeometry;
             path.Stroke = GetSolidColorBrush(Model.Color);
             path.StrokeThickness = Common.DefaultShapeThickness;
-            path.Fill = Model.Filled == "True" ? GetSolidColorBrush(Model.Color) : Brushes.Transparent;
+            path.Fill = Model.Filled.ToLower() == "true" ? GetSolidColorBrush(Model.Color) : Brushes.Transparent;
+            path.Name = Model.Type + GetShapeCount(Canvas, Model.Type);
             Canvas.Children.Add(path);
         }
+        /// <summary>
+        /// Adds a rectangle inside of the Canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired Rectangle</param>
+        private static void AddRectangleModel(this Canvas Canvas, RectangleModel Model)
+        {
+            PathFigure pathFigure = new PathFigure();
+            pathFigure.StartPoint = Canvas.GetCanvasPoint(Model.CarthesianA);
+            pathFigure.Segments.Add(new LineSegment(Canvas.GetCanvasPoint(Model.CarthesianB), true));
+            pathFigure.Segments.Add(new LineSegment(Canvas.GetCanvasPoint(Model.CarthesianC), true));
+            pathFigure.Segments.Add(new LineSegment(Canvas.GetCanvasPoint(Model.CarthesianD), true));
+            pathFigure.Segments.Add(new LineSegment(Canvas.GetCanvasPoint(Model.CarthesianA), true));
+            PathGeometry pathGeometry = new PathGeometry();
+            pathGeometry.Figures.Add(pathFigure);
+            Path path = new Path();
+            path.Data = pathGeometry;
+            path.Stroke = GetSolidColorBrush(Model.Color);
+            path.StrokeThickness = Common.DefaultShapeThickness;
+            path.Fill = Model.Filled.ToLower() == "true" ? GetSolidColorBrush(Model.Color) : Brushes.Transparent;
+            path.Name = Model.Type + GetShapeCount(Canvas, Model.Type);
+            Canvas.Children.Add(path);
+        }
+        /// <summary>
+        /// Adds a polygon inside of the Canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="Model">Desired Polygon</param>
+        private static void AddPolygonModel(this Canvas Canvas, PolygonModel Model)
+        {
+            Polygon polygon = new Polygon
+            {
+                Stroke = GetSolidColorBrush(Model.Color),
+                StrokeThickness = Common.DefaultShapeThickness,
+                Fill = Model.Filled.ToLower() == "true" ? GetSolidColorBrush(Model.Color) : Brushes.Transparent,
+                Name = Model.Type + GetShapeCount(Canvas, Model.Type)
+            };
+
+            foreach(string carthesianPoint in Model.Vertices)
+            {
+                Point point = Canvas.GetCanvasPoint(carthesianPoint);
+                polygon.Points.Add(point);
+            }            
+            Canvas.Children.Add(polygon);
+        }    
+        /// <summary>
+        /// Gets the total count of the specific kind of shape.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="type">Kind of shape.</param>
+        /// <returns></returns>
+        private static int GetShapeCount(this Canvas Canvas, string type)
+        {
+            int count = 1;
+            foreach(Shape shape in Canvas.Children)
+                if(shape.Name.Contains(type))
+                    count++;
+            return count;   
+        }        
         #endregion
 
         #region 'Canvas Size and Scale'
-        public static double GetPerfectScale(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox, double tolerance = 10)
+        /// <summary>
+        /// Initializes the canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        internal static void InitializeCanvas(this Canvas Canvas)
+        {
+            Border border = Canvas.GetParentBorder();
+            Canvas.Width = border.ActualWidth;
+            Canvas.Height = border.ActualHeight;
+            Canvas.RenderTransform = Transform.Identity;
+        }
+        /// <summary>
+        /// Sets canvases size for objects.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="ObjectsRangeBox">Objects which desired to be in canvas.</param>
+        internal static void SetCanvasSize(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox)
+        {
+            Border border = Canvas.GetParentBorder();
+            double Height = ObjectsRangeBox.RequiredViewportHeight;
+            double Width = ObjectsRangeBox.RequiredViewportWidth;            
+            bool scaledDown = Width > border.ActualWidth || Height > border.ActualHeight;
+            Canvas.Height = scaledDown ? Height : border.ActualHeight;
+            Canvas.Width = scaledDown ? Width : border.ActualWidth;
+            Canvas.UpdateLayout();
+        }
+        /// <summary>
+        /// Sets the canvas's scale. 
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="ObjectsRangeBox">Objects which desired to be in canvas.</param>
+        /// <param name="AlsoScaleIn">If true, even if objects fitting to screen completly program will zoom in.</param>
+        /// <returns></returns>
+        internal static double SetCanvasScaleForObjects(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox , bool? AlsoScaleIn)
+        {
+            double scale = GetPerfectScale(Canvas, ObjectsRangeBox);
+            if(scale > 1)
+            {
+                if (AlsoScaleIn == false) scale = 1;
+                Border parentBorder = Canvas.GetParentBorder();
+                ScaleTransform scaleTransform = new ScaleTransform(scale, scale, parentBorder.ActualWidth / 2, parentBorder.ActualHeight / 2);
+                Canvas.RenderTransform = scaleTransform;
+            }
+            else
+            {
+                ScaleTransform scaleTransform = new ScaleTransform(scale, scale, ObjectsRangeBox.RequiredViewportWidth / 2 , ObjectsRangeBox.RequiredViewportHeight / 2);
+                Canvas.RenderTransform = scaleTransform;
+            }            
+            return scale;
+        }
+        /// <summary>
+        /// Gets perfect scale for the canvas to show everything.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <param name="ObjectsRangeBox">RangeBox of the objects desired to be shown.</param>
+        /// <param name="tolerance">Tolerance value for RangeBox. It's make Rangebox bigger in every direction.</param>
+        /// <returns></returns>
+        private static double GetPerfectScale(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox, double tolerance = 10)
         {
             Border border = Canvas.GetParentBorder();
             double scaleX = border.ActualWidth / (ObjectsRangeBox.RequiredViewportWidth + tolerance);
             double scaleY = border.ActualHeight / (ObjectsRangeBox.RequiredViewportHeight + tolerance);
             return Math.Min(scaleX, scaleY);
         }
-        public static void SetCanvasSize(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox)
-        {
-            Border border = Canvas.GetParentBorder();
-            double Height = ObjectsRangeBox.RequiredViewportHeight;
-            double Width = ObjectsRangeBox.RequiredViewportWidth;
-            bool scaledDown = Width > border.ActualWidth || Height > border.ActualHeight;
-            Canvas.Height = scaledDown ? Height : border.ActualHeight;
-            Canvas.Width = scaledDown ? Width : border.ActualWidth;
-            Canvas.UpdateLayout();
-        }
-        public static double SetCanvasScaleForObjects(this Canvas Canvas, CarthesianRangeBoxModel ObjectsRangeBox , bool AlsoScaleIn)
-        {
-            double scale = GetPerfectScale(Canvas, ObjectsRangeBox);
-            if(scale > 1)
-            {
-                if (AlsoScaleIn)
-                {
-                    Border parentBorder = Canvas.GetParentBorder();
-                    ScaleTransform scaleTransform = new ScaleTransform(scale, scale, parentBorder.ActualWidth / 2, parentBorder.ActualHeight / 2);
-                    Common.MainView.canvas.RenderTransform = scaleTransform;
-                }
-                else
-                {
-                    scale = 1;
-                }              
-            }
-            else
-            {
-                ScaleTransform scaleTransform = new ScaleTransform(scale, scale, ObjectsRangeBox.RequiredViewportWidth / 2 , ObjectsRangeBox.RequiredViewportHeight / 2);
-                Common.MainView.canvas.RenderTransform = scaleTransform;
-            }            
-            return scale;
-        }
         #endregion
 
         #region 'Border and Scroll'
-        public static Border GetParentBorder(this Canvas Canvas)
-        {
-            return  (Border)((ScrollViewer)Canvas.Parent).Parent;
-        }
-        public static ScrollViewer GetParentScrollViewer(this Canvas Canvas)
-        {
-            return (ScrollViewer)Canvas.Parent;
-        }
-        public static void ScrollCenter(this Canvas Canvas)
+        /// <summary>
+        /// Scrolls the canvas to the center.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        internal static void ScrollCenter(this Canvas Canvas)
         {
             ScrollViewer scrollViewer = GetParentScrollViewer(Canvas);
             scrollViewer.ScrollToVerticalOffset(scrollViewer.ScrollableHeight / 2);
             scrollViewer.ScrollToHorizontalOffset(scrollViewer.ScrollableWidth / 2);
-        }      
-        #endregion
-        public static Point GetMousePositionOnCanvas(this Canvas Canvas, Point MousePosition)
-        {
-            return new Point((Canvas.Width/2) - MousePosition.X, (Canvas.Height/2) - MousePosition.Y);
         }
+        /// <summary>
+        /// Gets the Border object that parenting to this canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <returns></returns>
+        private static Border GetParentBorder(this Canvas Canvas)
+        {
+            return  (Border)((ScrollViewer)Canvas.Parent).Parent;
+        }
+        /// <summary>
+        /// Gets the ScrollViewer object that parenting to this canvas.
+        /// </summary>
+        /// <param name="Canvas"></param>
+        /// <returns></returns>
+        private static ScrollViewer GetParentScrollViewer(this Canvas Canvas)
+        {
+            return (ScrollViewer)Canvas.Parent;
+        }
+        #endregion
     }
 }
